@@ -1,0 +1,18 @@
+{
+  "levelName": "test",
+  "object": [
+    {
+      "CatG.core.object.GameObject": {
+        "name": "test",
+        "position": {
+          "x": 10,
+          "y": 20,
+          "z": 30
+        },
+        "cscripts": [
+
+        ]
+      }
+    }
+  ]
+}

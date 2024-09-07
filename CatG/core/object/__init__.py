@@ -1,4 +1,6 @@
-from .CObjectManager import CObjectManager
-from .CObject import CObject
-from .ContainerObject import ContainerObject
-from .GameObject import GameObject
+# from .Cobject import CObject
+# from .CobjectManager import CObjectManager
+# from .ContainerObject import ContainerObject
+# from .Cscript import CScript
+# from .GameCObject import GameCObject
+# from .UpdatableCObject import UpdatableCObject

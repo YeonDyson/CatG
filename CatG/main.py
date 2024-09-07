@@ -1,6 +1,7 @@
 import sys
 import pygame
-from CatG.core.object import CObjectManager
+
+from CatG.core.object.CobjectManager import CObjectManager
 
 
 def main():

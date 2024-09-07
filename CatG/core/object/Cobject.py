@@ -3,8 +3,7 @@ from abc import ABC, abstractmethod
 
 
 class CObject(ABC):
-    def __init__(self, object_id: uuid.UUID = None):
-        self.object_id = object_id
+    object_id = None
 
     @abstractmethod
     def on_enable(self):

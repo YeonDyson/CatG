@@ -3,6 +3,7 @@ import sys
 
 from typing import TypeVar
 
+from CatG.core.level.Level import Level
 from CatG.core.object.Cobject import CObject
 
 
@@ -25,18 +26,21 @@ class CObjectManager:
         import importlib
         import inspect
 
-
         root_package = os.path.dirname(sys.modules['__main__'].__file__)
-        root_package_path = root_package.replace(sys.path[1], '')
 
         for (root, dirs, files) in os.walk(root_package):
             for file in files:
                 if file.endswith('.py') and not file.startswith('__'):
-                    root_sibal = root.replace(sys.path[1], '')
-                    module_name = f"{root_sibal.replace('/', '.')}.{file[:-3]}"[1:]
+                    root_path = root.replace(sys.path[1], '')
+                    module_name = f"{root_path.replace('/', '.')}.{file[:-3]}"[1:]
 
                     module = importlib.import_module(module_name)
 
                     for name, obj in inspect.getmembers(module, inspect.isclass):
                         if issubclass(obj, CObject) and obj is not CObject:
                             self.cachingCObjects[name] = obj
+                            print(self.cachingCObjects)
+
+    def instantiate(self, level: Level = None):
+
+        pass

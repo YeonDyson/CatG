@@ -1,13 +1,13 @@
 import uuid
 
+from CatG.core.object.Cscript import CScript
 from CatG.core.object.UpdatableCObject import UpdatableCObject
 
 
 class GameCObject(UpdatableCObject):
-    def __init__(self, x:int, y:int, object_id: uuid.UUID = None):
-        super().__init__(object_id=object_id)
-        self.x = x
-        self.y = y
+    x:bool = 0
+    y:bool = 0
+    cscripts: list[CScript] = []
 
     def draw(self):
         pass

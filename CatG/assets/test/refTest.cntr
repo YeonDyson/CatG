@@ -1,0 +1,25 @@
+{
+  "$types": {
+    "PrefabContainer": "CatG.core.object.PrefabContainer",
+    "GameCObject": "CatG.core.object.GameCObject",
+    "Vector2": "pygame.math.Vector2"
+  },
+  "PrefabContainer": {
+    "prefab_name": "ExamplePrefab",
+    "prefab_gameObject": {
+      "GameCObject": {
+        "name": "ExampleObject",
+        "tag": "ExampleTag",
+        "layer": 1,
+        "child": [],
+        "position": {
+          "Vector2": {
+            "x": 10,
+            "y": 20
+          }
+        },
+        "cscripts": []
+      }
+    }
+  }
+}

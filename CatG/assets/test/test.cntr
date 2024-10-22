@@ -1,0 +1,37 @@
+{
+  "$types": {
+    "LevelContainer": "CatG.core.level.LevelContainer",
+    "GameCObject": "CatG.core.object.GameCObject",
+    "Vector2": "pygame.math.Vector2",
+    "CScript": "CatG.core.object.CScript"
+  },
+  "LevelContainer": {
+    "levelName": "test",
+    "tag": [
+      "sans"
+    ],
+    "gameObject": [
+      {
+        "GameCObject": {
+          "name": "test",
+          "tag": "sans",
+          "layer": 1,
+          "child": [],
+          "position": {
+            "Vector2": {
+              "x": 10,
+              "y": 20
+            }
+          },
+          "cscripts": [
+            {
+              "$ref": {
+                "obj": "assets.test.refTest.prefab_gameObject"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

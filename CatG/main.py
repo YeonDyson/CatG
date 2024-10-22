@@ -1,7 +1,8 @@
 import sys
 import pygame
 
-from CatG.core.object.CobjectManager import CObjectManager
+from CatG.core.asset import PrefabContainer, AssetManager
+from CatG.core.object import CObjectManager
 
 
 def main():
@@ -11,6 +12,10 @@ def main():
     clock = pygame.time.Clock()
 
     CObjectManager()
+    # test start
+    AssetManager.load_assets("assets/test/refTest", PrefabContainer)
+
+    # test end
 
     running = True
     while running:

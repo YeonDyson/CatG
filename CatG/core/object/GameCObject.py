@@ -1,12 +1,17 @@
 import uuid
 
-from CatG.core.object.Cscript import CScript
+from pygame import Vector2
+
+from CatG.core.object.CScript import CScript
 from CatG.core.object.UpdatableCObject import UpdatableCObject
 
 
 class GameCObject(UpdatableCObject):
-    x:bool = 0
-    y:bool = 0
+    name: str = ""
+    tag: str = ""
+    layer: bytes = 0
+    child: list['GameCObject'] = []
+    position: Vector2 = Vector2(0, 0)
     cscripts: list[CScript] = []
 
     def draw(self):

@@ -1,6 +1,9 @@
-from CatG.core.object import ContainerObject
+from pygame import Vector2
+
+from CatG.core.object import ContainerObject, GameCObject
 
 
 class LevelContainer(ContainerObject):
-    def __init__(self):
-        super().__init__()
+    levelName: str = "sibal"
+    tag: list[str] = []
+    gameObject: list[GameCObject] = []

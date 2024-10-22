@@ -3,10 +3,6 @@
   <component name="Black">
     <option name="sdkName" value="Python 3.11 (CatG)" />
   </component>
-  <component name="DiscordProjectSettings">
-    <option name="show" value="ASK" />
-    <option name="description" value="" />
-  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_22" project-jdk-name="Python 3.11 (GatG)" project-jdk-type="Python SDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>

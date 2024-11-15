@@ -1,0 +1,748 @@
+{
+  "$types": {
+    "LevelContainer": "CatG.core.level.LevelContainer",
+    "GameCObject": "CatG.core.game.GameCObject",
+    "Vector2": "pygame.math.Vector2",
+    "Camera": "CatG.core.game.Camera",
+    "Transform": "CatG.core.game.Transform",
+    "SpriteRender": "CatG.core.game.SpriteRender",
+    "ImageContainer": "CatG.core.asset.container.ImageContainer",
+    "ColliderMask": "CatG.core.physics.ColliderMask",
+    "PhysicsBody": "CatG.core.physics.PhysicsBody",
+    "PlayerMove": "CatG.script.player.PlayerMove",
+    "ColorFilter": "CatG.script.filter.BrightnessContrastFilter",
+    "ColliderBox": "CatG.core.physics.ColliderBox"
+  },
+  "LevelContainer": {
+    "levelName": "testmap",
+    "tag": [
+      "sans"
+    ],
+    "gameObject": [
+      {
+        "GameCObject": {
+          "name": "main camera",
+          "tag": "camera",
+          "layer": 1,
+          "child": [],
+          "transform": {
+            "Transform": {
+              "position": {
+                "Vector2": {
+                  "x": 0,
+                  "y": 0
+                }
+              }
+            }
+          },
+          "cscripts": [
+            {
+              "Camera": {
+                "camera_width": 480,
+                "camera_height": 270,
+                "camera_filters": [
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "GameCObject": {
+          "name": "outline",
+          "tag": "map_main",
+          "layer": 1,
+          "child": [],
+          "transform": {
+            "Transform": {
+              "position": {
+                "Vector2": {
+                  "x": 0,
+                  "y": 0
+                }
+              }
+            }
+          },
+          "cscripts": [
+            {
+              "SpriteRender": {
+                "image": {
+                  "ImageContainer": {
+                    "image_path": "assets/sprite/map/outline.png"
+                  }
+                }
+              }
+            },
+            {
+              "ColliderMask": {
+
+              }
+            },
+            {
+              "PhysicsBody": {
+                "body_type": "static"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "GameCObject": {
+          "name": "floor",
+          "tag": "map_main",
+          "layer": 1,
+          "child": [],
+          "transform": {
+            "Transform": {
+              "position": {
+                "Vector2": {
+                  "x": 0,
+                  "y": -44
+                }
+              }
+            }
+          },
+          "cscripts": [
+            {
+              "SpriteRender": {
+                "image": {
+                  "ImageContainer": {
+                    "image_path": "assets/sprite/map/floor.png"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "GameCObject": {
+          "name": "wall",
+          "tag": "map_main",
+          "layer": 1,
+          "child": [],
+          "transform": {
+            "Transform": {
+              "position": {
+                "Vector2": {
+                  "x": 0,
+                  "y": 60
+                }
+              }
+            }
+          },
+          "cscripts": [
+            {
+              "SpriteRender": {
+                "image": {
+                  "ImageContainer": {
+                    "image_path": "assets/sprite/map/wall.png"
+                  }
+                }
+              }
+            },
+            {
+              "ColliderMask": {
+
+              }
+            },
+            {
+              "PhysicsBody": {
+                "body_type": "static"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "GameCObject": {
+          "name": "bathroom_outline",
+          "tag": "map_bathroom",
+          "layer": 1,
+          "child": [],
+          "transform": {
+            "Transform": {
+              "position": {
+                "Vector2": {
+                  "x": -150,
+                  "y": 0
+                }
+              }
+            }
+          },
+          "cscripts": [
+            {
+              "SpriteRender": {
+                "image": {
+                  "ImageContainer": {
+                    "image_path": "assets/sprite/map/bathroom_outline.png"
+                  }
+                }
+              }
+            },
+            {
+              "ColliderMask": {
+
+              }
+            },
+            {
+              "PhysicsBody": {
+                "body_type": "static"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "GameCObject": {
+          "name": "bathroom_wall",
+          "tag": "map_bathroom",
+          "layer": 1,
+          "child": [],
+          "transform": {
+            "Transform": {
+              "position": {
+                "Vector2": {
+                  "x": -150,
+                  "y": 60
+                }
+              }
+            }
+          },
+          "cscripts": [
+            {
+              "SpriteRender": {
+                "image": {
+                  "ImageContainer": {
+                    "image_path": "assets/sprite/map/bathroom_wall.png"
+                  }
+                }
+              }
+            },
+            {
+              "ColliderMask": {
+
+              }
+            },
+            {
+              "PhysicsBody": {
+                "body_type": "static"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "GameCObject": {
+          "name": "bathroom_floor",
+          "tag": "map_bathroom",
+          "layer": 1,
+          "child": [],
+          "transform": {
+            "Transform": {
+              "position": {
+                "Vector2": {
+                  "x": -147,
+                  "y": -44
+                }
+              }
+            }
+          },
+          "cscripts": [
+            {
+              "SpriteRender": {
+                "image": {
+                  "ImageContainer": {
+                    "image_path": "assets/sprite/map/bathroom_floor.png"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "GameCObject": {
+          "name": "corridor_outline",
+          "tag": "map_corridor",
+          "layer": 1,
+          "child": [],
+          "transform": {
+            "Transform": {
+              "position": {
+                "Vector2": {
+                  "x": 152,
+                  "y": -8
+                }
+              }
+            }
+          },
+          "cscripts": [
+            {
+              "SpriteRender": {
+                "image": {
+                  "ImageContainer": {
+                    "image_path": "assets/sprite/map/corridor_outline.png"
+                  }
+                }
+              }
+            },
+            {
+              "ColliderMask": {
+
+              }
+            },
+            {
+              "PhysicsBody": {
+                "body_type": "static"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "GameCObject": {
+          "name": "corridor_floor",
+          "tag": "map_corridor",
+          "layer": 1,
+          "child": [],
+          "transform": {
+            "Transform": {
+              "position": {
+                "Vector2": {
+                  "x": 150,
+                  "y": -59
+                }
+              }
+            }
+          },
+          "cscripts": [
+            {
+              "SpriteRender": {
+                "image": {
+                  "ImageContainer": {
+                    "image_path": "assets/sprite/map/corridor_floor.png"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "GameCObject": {
+          "name": "corridor_wall",
+          "tag": "map_corridor",
+          "layer": 1,
+          "child": [],
+          "transform": {
+            "Transform": {
+              "position": {
+                "Vector2": {
+                  "x": 152,
+                  "y": 60
+                }
+              }
+            }
+          },
+          "cscripts": [
+            {
+              "SpriteRender": {
+                "image": {
+                  "ImageContainer": {
+                    "image_path": "assets/sprite/map/corridor_wall.png"
+                  }
+                }
+              }
+            },
+            {
+              "ColliderMask": {
+
+              }
+            },
+            {
+              "PhysicsBody": {
+                "body_type": "static"
+              }
+            }
+          ]
+        }
+      },{
+        "GameCObject": {
+          "name": "dressing_tabel",
+          "tag": "map_main",
+          "layer": 3,
+          "child": [],
+          "transform": {
+            "Transform": {
+              "position": {
+                "Vector2": {
+                  "x": -64,
+                  "y": -41
+                }
+              }
+            }
+          },
+          "cscripts": [
+            {
+              "SpriteRender": {
+                "image": {
+                  "ImageContainer": {
+                    "image_path": "assets/sprite/map/dressing_tabel1.png"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "GameCObject": {
+          "name": "bad",
+          "tag": "map_main",
+          "layer": 3,
+          "child": [],
+          "transform": {
+            "Transform": {
+              "position": {
+                "Vector2": {
+                  "x": -32,
+                  "y": -79
+                }
+              }
+            }
+          },
+          "cscripts": [
+            {
+              "SpriteRender": {
+                "image": {
+                  "ImageContainer": {
+                    "image_path": "assets/sprite/map/bad.png"
+                  }
+                }
+              }
+            },
+            {
+              "ColliderBox": {
+                "position": {
+                  "Vector2": {
+                    "x": 0,
+                    "y": -13
+                  }
+                },
+                "size": {
+                  "Vector2": {
+                    "x": 80,
+                    "y": 39
+                  }
+                }
+              }
+            },
+            {
+              "PhysicsBody": {
+                "body_type": "static"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "GameCObject": {
+          "name": "tv",
+          "tag": "map_main",
+          "layer": 2,
+          "child": [],
+          "transform": {
+            "Transform": {
+              "position": {
+                "Vector2": {
+                  "x": -52,
+                  "y": 39
+                }
+              }
+            }
+          },
+          "cscripts": [
+            {
+              "SpriteRender": {
+                "image": {
+                  "ImageContainer": {
+                    "image_path": "assets/sprite/map/tv.png"
+                  }
+                }
+              }
+            },
+            {
+              "ColliderMask": {
+
+              }
+            },
+            {
+              "PhysicsBody": {
+                "body_type": "static"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "GameCObject": {
+          "name": "wardrobe",
+          "tag": "map_main",
+          "layer": 2,
+          "child": [],
+          "transform": {
+            "Transform": {
+              "position": {
+                "Vector2": {
+                  "x": -8,
+                  "y": 43
+                }
+              }
+            }
+          },
+          "cscripts": [
+            {
+              "SpriteRender": {
+                "image": {
+                  "ImageContainer": {
+                    "image_path": "assets/sprite/map/wardrobe.png"
+                  }
+                }
+              }
+            },
+            {
+              "ColliderMask": {
+
+              }
+            },
+            {
+              "PhysicsBody": {
+                "body_type": "static"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "GameCObject": {
+          "name": "chair",
+          "tag": "map_main",
+          "layer": 2,
+          "child": [],
+          "transform": {
+            "Transform": {
+              "position": {
+                "Vector2": {
+                  "x": -45,
+                  "y": -43
+                }
+              }
+            }
+          },
+          "cscripts": [
+            {
+              "SpriteRender": {
+                "image": {
+                  "ImageContainer": {
+                    "image_path": "assets/sprite/map/chair.png"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "GameCObject": {
+          "name": "paper",
+          "tag": "map_main",
+          "layer": 1,
+          "child": [],
+          "transform": {
+            "Transform": {
+              "position": {
+                "Vector2": {
+                  "x": 60,
+                  "y": -5
+                }
+              }
+            }
+          },
+          "cscripts": [
+            {
+              "SpriteRender": {
+                "image": {
+                  "ImageContainer": {
+                    "image_path": "assets/sprite/map/paper.png"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "GameCObject": {
+          "name": "curtain",
+          "tag": "map_main",
+          "layer": 2,
+          "child": [],
+          "transform": {
+            "Transform": {
+              "position": {
+                "Vector2": {
+                  "x": 42,
+                  "y": 68
+                }
+              }
+            }
+          },
+          "cscripts": [
+            {
+              "SpriteRender": {
+                "image": {
+                  "ImageContainer": {
+                    "image_path": "assets/sprite/map/curtain.png"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "GameCObject": {
+          "name": "mirror",
+          "tag": "map_bathroom",
+          "layer": 2,
+          "child": [],
+          "transform": {
+            "Transform": {
+              "position": {
+                "Vector2": {
+                  "x": -155,
+                  "y": 65
+                }
+              }
+            }
+          },
+          "cscripts": [
+            {
+              "SpriteRender": {
+                "image": {
+                  "ImageContainer": {
+                    "image_path": "assets/sprite/map/mirror.png"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "GameCObject": {
+          "name": "washstand",
+          "tag": "map_bathroom",
+          "layer": 2,
+          "child": [],
+          "transform": {
+            "Transform": {
+              "position": {
+                "Vector2": {
+                  "x": -154,
+                  "y": 20
+                }
+              }
+            }
+          },
+          "cscripts": [
+            {
+              "SpriteRender": {
+                "image": {
+                  "ImageContainer": {
+                    "image_path": "assets/sprite/map/washstand.png"
+                  }
+                }
+              }
+            },
+            {
+              "ColliderMask": {
+
+              }
+            },
+            {
+              "PhysicsBody": {
+                "body_type": "static"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "GameCObject": {
+          "name": "bath",
+          "tag": "map_bathroom",
+          "layer": 4,
+          "child": [],
+          "transform": {
+            "Transform": {
+              "position": {
+                "Vector2": {
+                  "x": -155,
+                  "y": -84
+                }
+              }
+            }
+          },
+          "cscripts": [
+            {
+              "SpriteRender": {
+                "image": {
+                  "ImageContainer": {
+                    "image_path": "assets/sprite/map/bath.png"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "GameCObject": {
+          "enable": false,
+          "name": "vignette",
+          "tag": "overlay",
+          "layer": 5,
+          "child": [],
+          "transform": {
+            "Transform": {
+              "position": {
+                "Vector2": {
+                  "x": 0,
+                  "y": -3
+                }
+              }
+            }
+          },
+          "cscripts": [
+            {
+              "SpriteRender": {
+                "image": {
+                  "ImageContainer": {
+                    "image_path": "assets/sprite/overlay/vignette.png"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "$ref": {
+          "obj": "assets.player.player.prefab_gameObject"
+        }
+      }
+    ]
+  }
+}

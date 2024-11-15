@@ -5,18 +5,20 @@ from typing import Type
 
 from pygame import Vector2
 
-from CatG.core.object import CObject, CObjectManager, ContainerObject
+from CatG.core.object import CObject, ContainerObject
 from CatG.core.object.container.ContainerManager import ContainerManager
 from CatG.core.serialization.CustomAdapter import CustomAdapter
 
+
 # 코드가 이븐하게 익지 않앗석요
 
-def serialize_filed(cls):
-    if not isinstance(cls, type):
-        print("암튼 이건 예외임")
-        return
+# def serialize_filed(cls):
+#     if not isinstance(cls, type):
+#         print("암튼 이건 예외임")
+#         return
+#
+#     cls.serialize_filed = True
 
-    cls.serialize_filed = True
 
 def serialize_adapter(*types):
     def decorator(adapter_class: Type[CustomAdapter]):
@@ -26,9 +28,12 @@ def serialize_adapter(*types):
         adapter_instance = adapter_class()
         for type_ in types:
             Serializer.serializer_rule[type_] = adapter_instance
+            print(type_)
 
         return adapter_class
+
     return decorator
+
 
 class Serializer:
     serializer_rule: dict[type, CustomAdapter] = {}
@@ -52,9 +57,13 @@ class Serializer:
     def __class_serialize(cls: type):
         hasattr(cls, "serialize_filed")
 
-
     @staticmethod
     def __cobject_serialize(cls: CObject):
+        """
+        그러케 영원히 구현될 일은 없었다고 한다
+        :param cls:
+        :return:
+        """
         pass
 
     @staticmethod
@@ -63,6 +72,7 @@ class Serializer:
 
     @staticmethod
     def deserialize(json_str: str) -> ContainerObject:
+        from CatG.core.object import CObjectManager
         def die(data_dict: dict, ref: dict = None) -> type:
             name, value = next(iter(data_dict.items()))
             # print(name, "|||", value)
@@ -99,7 +109,6 @@ class Serializer:
                             cobject_instance.__dict__[_key] = die(_value, _ref)
                             continue
 
-
                     if isinstance(_value, list) and len(_value) > 0 and isinstance(_value[0], dict):
                         # if meta_types.get(next(iter(_value[0]), None)) is not None:
                         _objs = []
@@ -118,7 +127,7 @@ class Serializer:
                                 continue
 
                             if meta_types.get(next(iter(_obj), None)) is None:
-                                raise ValueError("메타 하라고 명시 하라고")
+                                raise ValueError("메타 하라고 명시 하라고", f": {_obj}")
 
                             _objs.append(die(_obj, _ref))
 
@@ -159,7 +168,7 @@ class Serializer:
         if not CObjectManager().is_cobject(root_key):
             raise ValueError("뒤질레")
 
-        root_instance = die(json_en, meta_ref)
+        root_instance: ContainerObject = die(json_en, meta_ref)
 
         # print(root_instance.__dict__)
         # print(type(root_instance))

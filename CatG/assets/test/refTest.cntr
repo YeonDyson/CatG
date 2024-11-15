@@ -1,7 +1,7 @@
 {
   "$types": {
     "PrefabContainer": "CatG.core.object.PrefabContainer",
-    "GameCObject": "CatG.core.object.GameCObject",
+    "GameCObject": "CatG.core.game.GameCObject",
     "Vector2": "pygame.math.Vector2"
   },
   "PrefabContainer": {

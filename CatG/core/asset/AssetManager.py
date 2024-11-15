@@ -5,8 +5,7 @@ from typing import TypeVar, Type, Any
 
 from pygame import Surface
 
-from CatG.core.asset import ImageContainer, SoundContainer
-from CatG.core.object import ContainerObject, CObjectManager
+from CatG.core.object import ContainerObject
 from CatG.core.serialization.Serialize import Serializer
 
 T = TypeVar('T')
@@ -38,10 +37,11 @@ class AssetManager:
 
         AssetManager._cache[path] = AssetData(path, container_object)
 
+        container_object.on_enable()
         return container_object
 
     @staticmethod
-    def load_image(path) -> Surface:
+    def load_image(path: str) -> Surface:
         path = os.path.abspath(path)
         if path in AssetManager._cache:
             return AssetManager._cache[path].data
@@ -49,6 +49,6 @@ class AssetManager:
         image = pygame.image.load(path)
         return image
 
-    @staticmethod
-    def load_sound(path) -> SoundContainer:
-        pass
+    # @staticmethod
+    # def load_sound(path) -> SoundContainer:
+    #     pass

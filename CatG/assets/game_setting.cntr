@@ -1,0 +1,10 @@
+{
+  "$types": {
+    "GameSetting": "CatG.core.game.GameManager"
+  },
+  "GameSetting": {
+    "screen_width": 960,
+    "screen_height": 540,
+    "fullscreen": false
+  }
+}

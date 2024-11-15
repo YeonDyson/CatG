@@ -1,7 +1,7 @@
 {
   "$types": {
     "LevelContainer": "CatG.core.level.LevelContainer",
-    "GameCObject": "CatG.core.object.GameCObject",
+    "GameCObject": "CatG.core.game.GameCObject",
     "Vector2": "pygame.math.Vector2",
     "CScript": "CatG.core.object.CScript"
   },

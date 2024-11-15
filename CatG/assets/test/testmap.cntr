@@ -1,0 +1,74 @@
+{
+  "$types": {
+    "LevelContainer": "CatG.core.level.LevelContainer",
+    "GameCObject": "CatG.core.game.GameCObject",
+    "Vector2": "pygame.math.Vector2",
+    "Camera": "CatG.core.game.Camera",
+    "Transform": "CatG.core.game.Transform",
+    "SpriteRender": "CatG.core.game.SpriteRender",
+    "ImageContainer": "CatG.core.asset.container.ImageContainer"
+  },
+  "LevelContainer": {
+    "levelName": "testmap",
+    "tag": [
+      "sans"
+    ],
+    "gameObject": [
+      {
+        "GameCObject": {
+          "name": "main camera",
+          "tag": "camera",
+          "layer": 1,
+          "child": [],
+          "transform": {
+            "Transform": {
+              "position": {
+                "Vector2": {
+                  "x": 0,
+                  "y": 0
+                }
+              }
+            }
+          },
+          "cscripts": [
+            {
+              "Camera": {
+                "camera_width": 480,
+                "camera_height": 270
+              }
+            }
+          ]
+        }
+      },
+      {
+        "GameCObject": {
+          "name": "arisu",
+          "tag": "player",
+          "layer": 1,
+          "child": [],
+          "transform": {
+            "Transform": {
+              "position": {
+                "Vector2": {
+                  "x": 0,
+                  "y": 100
+                }
+              }
+            }
+          },
+          "cscripts": [
+            {
+              "SpriteRender": {
+                "image": {
+                  "ImageContainer": {
+                    "image_path": "assets/sprite/arisuu.png"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

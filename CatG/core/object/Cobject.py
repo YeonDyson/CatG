@@ -1,3 +1,4 @@
+import copy
 import uuid
 from abc import ABC, abstractmethod
 
@@ -15,8 +16,10 @@ class CObject(ABC):
         cls.object_id = uuid.uuid4()
         for name, value in cls.__dict__.items():
             if not name.startswith('__') and not name.startswith('_abc') and name != '_can_instantiate' and not callable(value):
-
-                setattr(__instance, name, value)
+                try:
+                    setattr(__instance, name, copy.deepcopy(value))
+                except TypeError:
+                    setattr(__instance, name, value)
 
         return __instance
 

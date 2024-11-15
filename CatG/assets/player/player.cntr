@@ -1,0 +1,108 @@
+{
+  "$types": {
+    "PrefabContainer": "CatG.core.object.PrefabContainer",
+    "GameCObject": "CatG.core.game.GameCObject",
+    "Vector2": "pygame.math.Vector2",
+    "Transform": "CatG.core.game.Transform",
+    "SpriteRender": "CatG.core.game.SpriteRender",
+    "ImageContainer": "CatG.core.asset.container.ImageContainer",
+    "PlayerMove": "CatG.core.player.PlayerMove",
+    "ColliderBox": "CatG.core.physics.ColliderBox",
+    "PhysicsBody": "CatG.core.physics.PhysicsBody",
+    "Animation": "CatG.core.game.anim.Animation"
+  },
+  "PrefabContainer": {
+    "prefab_name": "PlayerPrefab",
+    "prefab_gameObject": {
+      "GameCObject": {
+        "name": "player",
+        "tag": "player",
+        "layer": 2,
+        "child": [],
+        "transform": {
+          "Transform": {
+            "position": {
+              "Vector2": {
+                "x": 0,
+                "y": -5
+              }
+            }
+          }
+        },
+        "cscripts": [
+          {
+            "SpriteRender": {
+              "image": {
+                "ImageContainer": {
+                  "image_path": "assets/sprite/player/player1.png"
+                }
+              }
+            }
+          },
+          {
+            "PlayerMove": {
+
+            }
+          },
+          {
+            "ColliderBox": {
+              "position": {
+                "Vector2": {
+                  "x": 0,
+                  "y": -30
+                }
+              },
+              "size": {
+                "Vector2": {
+                  "x": 12,
+                  "y": 5
+                }
+              }
+            }
+          },
+          {
+            "PhysicsBody": {
+              "body_type": "dynamic"
+            }
+          },
+          {
+            "Animation": {
+              "animation_clips": [
+                {
+                  "$ref": {
+                    "obj": "assets.anim.player_walk"
+                  }
+                },
+                {
+                  "$ref": {
+                    "obj": "assets.anim.player_walk_back"
+                  }
+                },
+                {
+                  "$ref": {
+                    "obj": "assets.anim.player_walk_side"
+                  }
+                },
+                {
+                  "$ref": {
+                    "obj": "assets.anim.player_idle_side"
+                  }
+                },
+                {
+                  "$ref": {
+                    "obj": "assets.anim.player_idle_back"
+                  }
+                },
+                {
+                  "$ref": {
+                    "obj": "assets.anim.player_idle"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

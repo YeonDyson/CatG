@@ -1,8 +1,9 @@
 import os
 import sys
-from itertools import count
-from os.path import split
-from typing import TypeVar, Any
+from typing import TypeVar, Any, TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from CatG.core.object import ContainerObject
 
 
 class ContainerManager:
@@ -17,8 +18,7 @@ class ContainerManager:
         if not hasattr(self, 'initialized'):
             T = TypeVar('T')
             self.cache_paths: list[str] = []
-            from CatG.core.object import ContainerObject
-            self.containerCObjects: list[ContainerObject] = []
+            self.containerCObjects: list['ContainerObject'] = []
             self.initialized = True
             self.__load_container()
 
@@ -36,8 +36,6 @@ class ContainerManager:
             instance = AssetManager.load_assets(path, ContainerObject)
             if instance not in self.containerCObjects:
                 self.containerCObjects.append(instance)
-
-        print(self.containerCObjects[0].gameObject[0].__dict__)
 
     def ref_container(self, path) -> Any:
         ref_path = path.split('.')
@@ -60,18 +58,22 @@ class ContainerManager:
                 continue
 
             ref_obj = None
-            for object in self.containerCObjects:
-                if object._path == cached_path:
-                    ref_obj = object
+            for obj in self.containerCObjects:
+                if obj._path == cached_path:
+                    ref_obj = obj
 
             if ref_obj is None:
                 from CatG.core.object import ContainerObject
                 from CatG.core.asset import AssetManager
                 ref_obj = AssetManager.load_assets(cached_path, ContainerObject)
-                print(cached_path, "ssssssssss")
-                print(ref_obj)
+                # print(cached_path, "ssssssssss")
+                # print(ref_obj)
 
             variable_path: list[str] = ref_path[file_index:]
+
+            if len(variable_path) == 0:
+                return ref_obj
+
             target_obj = ref_obj
             final_obj = None
             for index, attr_name in enumerate(variable_path):
@@ -89,7 +91,7 @@ class ContainerManager:
                 else:
                     raise ValueError("ㅉ")
 
-            print(final_obj)
+            # print(final_obj)
             return final_obj
 
         raise ValueError("주소 없다?")

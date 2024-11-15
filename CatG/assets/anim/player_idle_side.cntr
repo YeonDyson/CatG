@@ -1,0 +1,23 @@
+{
+  "$types": {
+    "AnimationClip": "CatG.core.game.anim.AnimationClip",
+    "Frame": "CatG.core.game.anim.AnimationClip.Frame",
+    "ImageContainer": "CatG.core.asset.container.ImageContainer"
+  },
+  "AnimationClip": {
+    "name": "player_idle_side",
+    "frames": [
+      {
+        "Frame": {
+          "image": {
+            "ImageContainer": {
+              "image_path": "assets/sprite/player/player2.png"
+            }
+          },
+          "duration": 300
+        }
+      }
+    ],
+    "loop": true
+  }
+}

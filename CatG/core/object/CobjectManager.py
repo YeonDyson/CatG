@@ -1,14 +1,13 @@
 import os
 import sys
 
-from typing import TypeVar
+from typing import TypeVar, Callable, Any
 
-from CatG.core.level.Level import Level
+from CatG.core.level import Level
 from CatG.core.object.Cobject import CObject
-from CatG.core.object.container.ContainerManager import ContainerManager
-from CatG.core.object.container.ContainerObject import ContainerObject
 
 
+# 뭐만 하면 맨날 순환참조래
 class CObjectManager:
     _instance = None
 
@@ -25,7 +24,6 @@ class CObjectManager:
             self.cachingCObjects: dict[str, T] = {}
             self.initialized = True
             self.__load_cobject()
-            ContainerManager()
 
     def __load_cobject(self):
         import importlib
@@ -48,25 +46,27 @@ class CObjectManager:
     def is_cobject(self, name: str) -> bool:
         return name in self.cachingCObjects
 
-    def instantiate(self, cobject: type[T], level: Level = None) -> T:
+    def instantiate(self, cobject: type[T], level: Level = None, init: Callable[[T], Any] = None) -> T:
         if not issubclass(cobject, CObject):
             raise TypeError(f"{cobject.__name__} CObject가 아니잔아")
 
         cobject._can_instantiate = True
         instance = cobject()
-        instance.on_enable()
 
-        if issubclass(cobject, ContainerObject):
-            ContainerManager().containerCObjects.append(instance)
+        if init is not None:
+            init(instance)
 
         if level is not None:
             # TODO: 레벨 오브젝트 등록
             pass
 
         cobject._can_instantiate = False
+
+        instance.on_create()
         return instance
 
     def instantiate_by_name(self, name: str, level: Level = None) -> CObject:
+
         cobject: type = self.cachingCObjects.get(name)
         if cobject is None:
             raise NameError(f"{name}라는 CObject는 없음")
@@ -74,16 +74,13 @@ class CObjectManager:
         cobject._can_instantiate = True
 
         instance = cobject()
-        instance.on_enable()
-
-        if issubclass(cobject, ContainerObject):
-            ContainerManager().containerCObjects.append(instance)
-
 
         if level is not None:
             # TODO: 레벨 오브젝트 등록
             pass
 
         cobject._can_instantiate = False
+
+        instance.on_create()
         return instance
 
